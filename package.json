@@ -3,12 +3,34 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@atlaskit/avatar": "^20.0.6",
+    "@atlaskit/breadcrumbs": "^10.0.9",
+    "@atlaskit/button": "^15.1.1",
+    "@atlaskit/css-reset": "^6.0.4",
+    "@atlaskit/form": "^8.1.6",
+    "@atlaskit/icon": "^21.1.4",
+    "@atlaskit/page-header": "^10.0.6",
+    "@atlaskit/page-layout": "^0.10.9",
+    "@atlaskit/textfield": "^4.0.9",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.6",
+    "@types/react": "^16.9.55",
+    "@types/react-dom": "^16.9.9",
+    "gh-pages": "^3.1.0",
+    "lodash": "^4.17.20",
+    "random-names-places": "^1.2.1",
+    "randomcolor": "^0.6.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "robohash-avatars": "^1.0.1",
+    "styled-components": "^5.2.0",
+    "typescript": "^4.0.5",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -34,5 +56,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.163",
+    "@types/react-router-dom": "^5.1.6",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.6.0",
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8"
   }
 }
