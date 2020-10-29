@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-// @ts-ignore
-import random from 'random-names-places';
-// @ts-ignore
 import randomColor from 'randomcolor';
-import { get, isEmpty, isEqual } from 'lodash';
+import { compress, decompress } from 'shrink-string';
+import { get } from 'lodash';
+import debugLib from 'debug';
 import * as robohashAvatars from 'robohash-avatars';
 import {
   Content,
@@ -16,11 +15,16 @@ import {
 } from '@atlaskit/page-layout';
 import Button from '@atlaskit/button/standard-button';
 import { useHistory } from 'react-router-dom';
-import Textfield from '@atlaskit/textfield';
+import InlineEdit from '@atlaskit/inline-edit';
+import TextArea from '@atlaskit/textarea';
+import md from 'md';
 import AddUserBlock from './AddUserBlock';
-import TopHeader from './TopHeader';
-import User from './User';
+import TopHeader from './components/TopHeader';
+import User from './components/User';
+import { UserModel } from './types';
+import PageTitle from './components/PageTitle';
 
+const debug = debugLib('robin:App');
 const Wrapper = ({
   borderColor,
   children,
@@ -45,6 +49,7 @@ const Wrapper = ({
       overflowY: 'auto',
       overflowX: noHorizontalScrollbar ? 'hidden' : 'auto',
       backgroundColor: 'white',
+      textAlign: 'left',
     }}
   >
     {children}
@@ -67,32 +72,50 @@ const getRandomByName = (name: string) => ({
   avatar: getAvatar(name),
 });
 
-let restoredState:any = {};
-try {
-  restoredState = JSON.parse(decodeURIComponent(window.location.hash.substr(3)));
-} catch (e) {
-  // Bad Hash
-}
-
 function App() {
-  const randomName = random.name();
   const history = useHistory();
+  // Hack to async restore initial data (should be called once)
+  const [restoredState, setRestored] = useState<any>(false);
 
-  const [users, setUsers] = useState([...restoredState.users || [getRandomByName(randomName)]]);
-  const [topic, setTopic] = useState(restoredState.topic || '');
-  const [currentUserIndex, setUserIndex] = useState(restoredState.currentUserIndex || 0);
+  const [users, setUsers] = useState<UserModel[]>([]);
+  const [topic, setTopic] = useState('');
+  const [currentUserIndex, setUserIndex] = useState(0);
+
   const removeUserByIndex = (index: number) => {
     setUsers([...users
       .filter((_user, currentIndex) => index !== currentIndex)]);
   };
   useEffect(() => {
-    if (isEmpty(restoredState) || !isEqual(restoredState, { users, currentUserIndex })) {
-      history.push({ hash: JSON.stringify({ users, currentUserIndex, topic }) });
-    }
+    (async () => {
+      debug('useEffect');
+      let restoredStateValue;
+      if (!restoredState) {
+        try {
+          restoredStateValue = JSON.parse(
+            await decompress(decodeURIComponent(window.location.hash.substr(3))),
+          );
+          setRestored(restoredStateValue);
+          setUsers(restoredStateValue.users || []);
+          setTopic(restoredStateValue.topic || '');
+          setUserIndex(restoredStateValue.currentUserIndex || 0);
+          debug('restored', { restoredStateValue });
+        } catch (e) {
+          // Bad Hash
+          setRestored({});
+          debug('restore skipped %o', restoredStateValue);
+        }
+      }
+      if (restoredState) {
+        const state = await compress(JSON.stringify({ users, currentUserIndex, topic }));
+        history.push({ hash: state });
+        debug('set state %o', { restoredStateValue, restoredState });
+      }
+    })();
   }, [users, currentUserIndex, topic]);
 
   return (
     <div className="App">
+      <PageTitle userTitle={topic} />
       <header className="App-header">
         <TopHeader />
       </header>
@@ -119,32 +142,36 @@ function App() {
           >
             <Wrapper borderColor="darkgreen">
               <div style={{ minWidth: 50, padding: '0 20px' }}>
-                <h4 style={{ textAlign: 'center' }}>Available persons</h4>
-                <p>
-                  {users.map((user, index) => (
-                    <User user={user} status={currentUserIndex === index ? 'locked' : undefined} onRemove={() => removeUserByIndex(index)} />
+                <h4>Available persons</h4>
 
-                  ))}
-                  <AddUserBlock onSubmit={(formData) => {
-                    setUsers([...users, getRandomByName(formData.name)]);
-                  }}
-                  />
-                </p>
+                {users.map((user, index) => (
+                  <div style={{ margin: '5px 0' }}>
+                    <User user={user} status={currentUserIndex === index ? 'locked' : undefined} onRemove={() => removeUserByIndex(index)} />
+                  </div>
+
+                ))}
+                <AddUserBlock onSubmit={(formData) => {
+                  setUsers([...users, getRandomByName(formData.name)]);
+                }}
+                />
               </div>
             </Wrapper>
           </LeftSidebarWithoutResize>
-          <Main testId="main" id="main" skipLinkTitle="Current Responsible">
+          <Main testId="main" id="main">
             <Wrapper borderColor="black" minHeight="400px">
-              <h4 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                Current Responsible for:
-                <Textfield width={150} css={{ width: '150px' }} defaultValue={topic} onChange={({ currentTarget: { value } }) => setTopic(value)} placeholder="(Enter topic)" />
-              </h4>
-              <p>
-
-                {users[currentUserIndex] ? <User user={users[currentUserIndex]} status="locked" /> : 'No responsible'}
-              </p>
-
+              <InlineEdit
+                defaultValue={topic}
+                onConfirm={(value) => setTopic(value)}
+                label="Current responsibility:"
+                editView={(fieldProps, ref) => (
+                  // @ts-ignore
+                  <TextArea {...fieldProps} ref={ref} />
+                )}
+                readView={() => <article style={{ width: '100%' }} dangerouslySetInnerHTML={{ __html: md(topic) }} />}
+              />
+              {users[currentUserIndex] ? <User user={users[currentUserIndex]} status="locked" /> : 'No responsible'}
               <Button
+                style={{ margin: '10px 0' }}
                 css={{}}
                 type="submit"
                 appearance="primary"

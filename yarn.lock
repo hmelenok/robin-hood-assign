@@ -61,7 +61,7 @@
     "@atlaskit/theme" "^11.0.0"
     fbjs "^3.0.0"
 
-"@atlaskit/form@^8.1.6":
+"@atlaskit/form@^8.1.0", "@atlaskit/form@^8.1.6":
   version "8.1.6"
   resolved "https://registry.yarnpkg.com/@atlaskit/form/-/form-8.1.6.tgz#89efe76f8c7faea256c990c6f567d3e140182d28"
   integrity sha512-S+S5qsx49IRLEp1yKaUk7bf9sKDgHRnXRwDW7XDfoGkGITV6OJ0ZAtY51u4ftXo9wLYz1MdkTBHLzzptaPqYMA==
@@ -83,6 +83,32 @@
     "@atlaskit/theme" "^11.0.0"
     tslib "^2.0.0"
     uuid "^3.1.0"
+
+"@atlaskit/inline-dialog@^13.0.0":
+  version "13.0.8"
+  resolved "https://registry.yarnpkg.com/@atlaskit/inline-dialog/-/inline-dialog-13.0.8.tgz#1d891c47f3913b443ac3d8e23c06132cd77940d6"
+  integrity sha512-n45GhUrP1YGj9GPJelvGj17w9t8Gwp+FiLTBYZmzNAzNUcvZDbZDXgPU2cq+W9tNKQCvOx5Sv23UJHcJsRmBkA==
+  dependencies:
+    "@atlaskit/analytics-next" "^8.0.0"
+    "@atlaskit/popper" "^5.0.0"
+    "@atlaskit/theme" "^11.0.0"
+    react-node-resolver "^1.0.1"
+    tslib "^2.0.0"
+
+"@atlaskit/inline-edit@^11.0.6":
+  version "11.0.6"
+  resolved "https://registry.yarnpkg.com/@atlaskit/inline-edit/-/inline-edit-11.0.6.tgz#7df136f8af3e9fc5b36df4e2af76ecd3812b3648"
+  integrity sha512-u6BG2OQ10llvXH7Lhe8HojHx6BwqRaV/XxYtZKrxKUE8Tpm3HDD2g+7dXfpKMRQl8PySR5tZ/uGHzaMQogc2Dg==
+  dependencies:
+    "@atlaskit/analytics-next" "^8.0.0"
+    "@atlaskit/button" "^15.1.0"
+    "@atlaskit/form" "^8.1.0"
+    "@atlaskit/icon" "^21.0.0"
+    "@atlaskit/inline-dialog" "^13.0.0"
+    "@atlaskit/textfield" "^4.0.0"
+    "@atlaskit/theme" "^11.0.0"
+    react-loadable "^5.1.0"
+    tslib "^2.0.0"
 
 "@atlaskit/motion@^0.4.0":
   version "0.4.5"
@@ -141,7 +167,16 @@
     "@emotion/core" "^10.0.9"
     tslib "^2.0.0"
 
-"@atlaskit/textfield@^4.0.9":
+"@atlaskit/textarea@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@atlaskit/textarea/-/textarea-3.0.5.tgz#d561bc29b712cff4bf715b9ce137a5bc88782827"
+  integrity sha512-q0wp0OG8UNQTJeacPx/cT7riDDzCky9bbFJRtaC5/7ZTcjTfIXFuVAqU5B+lXmIyd/kpfV03yN64kJ7TJt47DA==
+  dependencies:
+    "@atlaskit/analytics-next" "^8.0.0"
+    "@atlaskit/theme" "^11.0.0"
+    tslib "^2.0.0"
+
+"@atlaskit/textfield@^4.0.0", "@atlaskit/textfield@^4.0.9":
   version "4.0.9"
   resolved "https://registry.yarnpkg.com/@atlaskit/textfield/-/textfield-4.0.9.tgz#5189786331fbc8df4571829e9126f54dc5a39ab9"
   integrity sha512-xlyGYQNiZK95ZYVLZckbcsedqZq8S3Du3fzpj+NdLR5MaBNl3JZDamwuXvO8HLtIzSvq9H7d6SpyLqY1Rqys6A==
@@ -1817,6 +1852,11 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/debug@^4.1.5":
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.5.tgz#b14efa8852b7768d898906613c23f688713e02cd"
+  integrity sha512-Q1y515GcOdTHgagaVFhHnIFQ38ygs/kmxdNpvpou+raI9UO3YZcHDngBSYKQklcKlvA7iuQlmIKbzvmxcOE9CQ==
+
 "@types/eslint@^7.2.0":
   version "7.2.4"
   resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-7.2.4.tgz#d12eeed7741d2491b69808576ac2d20c14f74c41"
@@ -1946,6 +1986,13 @@
   version "16.9.9"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.9.tgz#d2d0a6f720a0206369ccbefff752ba37b9583136"
   integrity sha512-jE16FNWO3Logq/Lf+yvEAjKzhpST/Eac8EMd1i4dgZdMczfgqC8EjpxwNgEe3SExHYLliabXDh9DEhhqnlXJhg==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-helmet@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-6.1.0.tgz#af586ed685f4905e2adc7462d1d65ace52beee7a"
+  integrity sha512-PYRoU1XJFOzQ3BHvWL1T8iDNbRjdMDJMT5hFmZKGbsq09kbSqJy61uwEpTrbTNWDopVphUT34zUSVLK9pjsgYQ==
   dependencies:
     "@types/react" "*"
 
@@ -4266,7 +4313,7 @@ debug@^3.1.1, debug@^3.2.5:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
+debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.2.0.tgz#7f150f93920e94c58f5574c2fd01a3110effe7f1"
   integrity sha512-IX2ncY78vDTjZMFUdmsvIRFY2Cf4FnD0wRs+nQwJU8Lu99/tPFdb0VybiiMTPe3I6rQmwsqQqRBvxU+bZ/I8sg==
@@ -7647,6 +7694,13 @@ md5.js@^1.3.4:
     inherits "^2.0.1"
     safe-buffer "^5.1.2"
 
+md@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/md/-/md-0.6.0.tgz#5a42cebfc50ef09f87f694ddcff1e3dfc0ab6ca6"
+  integrity sha1-WkLOv8UO8J+H9pTdz/Hj38CrbKY=
+  dependencies:
+    slugo "^0.2.1"
+
 mdn-data@2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-2.0.4.tgz#699b3c38ac6f1d728091a64650b65d388502fd5b"
@@ -9437,7 +9491,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -9664,10 +9718,20 @@ react-error-overlay@^6.0.8:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.8.tgz#474ed11d04fc6bda3af643447d85e9127ed6b5de"
   integrity sha512-HvPuUQnLp5H7TouGq3kzBeioJmXms1wHy9EGjz2OURWBp4qZO6AfGEcnxts1D/CbwPLRAgTMPCEgYhA3sEM4vw==
 
-react-fast-compare@^3.0.1:
+react-fast-compare@^3.0.1, react-fast-compare@^3.1.1:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
+
+react-helmet@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
+  integrity sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==
+  dependencies:
+    object-assign "^4.1.1"
+    prop-types "^15.7.2"
+    react-fast-compare "^3.1.1"
+    react-side-effect "^2.1.0"
 
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
@@ -9678,6 +9742,18 @@ react-is@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
+
+react-loadable@^5.1.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/react-loadable/-/react-loadable-5.5.0.tgz#582251679d3da86c32aae2c8e689c59f1196d8c4"
+  integrity sha512-C8Aui0ZpMd4KokxRdVAm2bQtI03k2RMRNzOB+IipV3yxFTSVICv7WoUr5L9ALB5BmKO1iHgZtWM8EvYG83otdg==
+  dependencies:
+    prop-types "^15.5.0"
+
+react-node-resolver@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-node-resolver/-/react-node-resolver-1.0.1.tgz#1798a729c0e218bf2f0e8ddf79c550d4af61d83a"
+  integrity sha1-F5inKcDiGL8vDo3fecVQ1K9h2Do=
 
 react-popper@^2.2.3:
   version "2.2.3"
@@ -9785,6 +9861,11 @@ react-scripts@4.0.0:
     workbox-webpack-plugin "5.1.4"
   optionalDependencies:
     fsevents "^2.1.3"
+
+react-side-effect@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"
+  integrity sha512-IgmcegOSi5SNX+2Snh1vqmF0Vg/CbkycU9XZbOHJlZ6kMzTmi3yc254oB1WCkgA7OQtIAoLmcSFuHTc/tlcqXg==
 
 react-uid@^2.2.0:
   version "2.3.0"
@@ -10546,6 +10627,11 @@ shellwords@^0.1.1:
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
 
+shrink-string@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/shrink-string/-/shrink-string-3.0.7.tgz#8a8b120bed5f4c426a8ec4554df1b617d3a1f270"
+  integrity sha512-mqopWg3KeKIUy2XHiLpkIAVe7F5z3LK8R2vtMo2PZeJt7FK3F5oj4DYqPc/PJO1GJi+dOSlz24xnHzmOGMwiqQ==
+
 side-channel@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/side-channel/-/side-channel-1.0.3.tgz#cdc46b057550bbab63706210838df5d4c19519c3"
@@ -10584,6 +10670,11 @@ slice-ansi@^2.1.0:
     ansi-styles "^3.2.0"
     astral-regex "^1.0.0"
     is-fullwidth-code-point "^2.0.0"
+
+slugo@^0.2.1:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/slugo/-/slugo-0.2.3.tgz#2c602fe1e76d5fa3c6f75223537fbd80ae33929c"
+  integrity sha512-4nav6mk321IWKaWxgvygjp2JB0d5sNGgkPUJ+EGQZmmcvuXS+4DwdhhPa9L8WBg6fVQDID3PO+t6wYM1NqVbkA==
 
 snapdragon-node@^2.0.1:
   version "2.1.1"

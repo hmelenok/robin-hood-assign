@@ -1,7 +1,7 @@
 import React from 'react';
 import Avatar, { AvatarItem } from '@atlaskit/avatar';
 import CrossIcon from '@atlaskit/icon/glyph/cross';
-import { UserModel } from './types';
+import { UserModel } from '../types';
 
 const User = ({ user, status, onRemove }:{
   user: UserModel, status: string | undefined, onRemove?: () =>void}) => (
