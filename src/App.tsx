@@ -131,12 +131,14 @@ function App() {
               <div style={{ minWidth: 50, padding: '0 20px' }}>
                 <h4>Available Assignees</h4>
 
-                {users.map((user, index) => (
-                  <div style={{ margin: '5px 0' }}>
-                    <User user={user} status={currentUserIndex === index ? 'locked' : undefined} onSelect={() => setUserIndex(index)} onRemove={() => removeUserByIndex(index)} />
-                  </div>
-
-                ))}
+                {users.map((user, index) => {
+                  const selected = currentUserIndex === index;
+                  return (
+                    <div style={{ margin: '5px 0' }}>
+                      <User user={user} selected={selected} status={selected ? 'locked' : undefined} onSelect={() => setUserIndex(index)} onRemove={() => removeUserByIndex(index)} />
+                    </div>
+                  );
+                })}
                 <AddUserBlock onSubmit={(formData) => {
                   setUsers([...users, getRandomByName(formData.name)]);
                 }}
@@ -156,7 +158,7 @@ function App() {
                 )}
                 readView={() => <article style={{ width: '100%' }} dangerouslySetInnerHTML={{ __html: md(topic || '(click here to edit)') }} />}
               />
-              {users[currentUserIndex] ? <User user={users[currentUserIndex]} status="locked" /> : 'No assignees'}
+              {users[currentUserIndex] ? <User selected user={users[currentUserIndex]} status="locked" /> : 'No assignees'}
               <Button
                 style={{ margin: '10px 0' }}
                 css={{}}
