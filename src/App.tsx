@@ -11,7 +11,6 @@ import {
   Main,
   PageLayout,
   RightPanel,
-  TopNavigation,
 } from '@atlaskit/page-layout';
 import Button from '@atlaskit/button/standard-button';
 import { useHistory } from 'react-router-dom';
@@ -115,23 +114,11 @@ function App() {
 
   return (
     <div className="App">
-      <PageTitle userTitle={topic} />
+      <PageTitle />
       <header className="App-header">
         <TopHeader />
       </header>
       <PageLayout>
-
-        <TopNavigation
-          testId="topNavigation"
-          id="product-navigation"
-          skipLinkTitle="Product Navigation"
-          height={90}
-          isFixed={false}
-        >
-          <Wrapper borderColor="blue">
-            <h3 style={{ textAlign: 'center' }}>Assignment queue made easy!</h3>
-          </Wrapper>
-        </TopNavigation>
         <Content testId="content">
           <LeftSidebarWithoutResize
             testId="leftSidebar"
@@ -142,11 +129,11 @@ function App() {
           >
             <Wrapper borderColor="darkgreen">
               <div style={{ minWidth: 50, padding: '0 20px' }}>
-                <h4>Available persons</h4>
+                <h4>Available Assignees</h4>
 
                 {users.map((user, index) => (
                   <div style={{ margin: '5px 0' }}>
-                    <User user={user} status={currentUserIndex === index ? 'locked' : undefined} onRemove={() => removeUserByIndex(index)} />
+                    <User user={user} status={currentUserIndex === index ? 'locked' : undefined} onSelect={() => setUserIndex(index)} onRemove={() => removeUserByIndex(index)} />
                   </div>
 
                 ))}
@@ -167,9 +154,9 @@ function App() {
                   // @ts-ignore
                   <TextArea {...fieldProps} ref={ref} />
                 )}
-                readView={() => <article style={{ width: '100%' }} dangerouslySetInnerHTML={{ __html: md(topic) }} />}
+                readView={() => <article style={{ width: '100%' }} dangerouslySetInnerHTML={{ __html: md(topic || '(click here to edit)') }} />}
               />
-              {users[currentUserIndex] ? <User user={users[currentUserIndex]} status="locked" /> : 'No responsible'}
+              {users[currentUserIndex] ? <User user={users[currentUserIndex]} status="locked" /> : 'No assignees'}
               <Button
                 style={{ margin: '10px 0' }}
                 css={{}}
@@ -187,10 +174,46 @@ function App() {
           id="help-panel"
           skipLinkTitle="Help Panel"
           isFixed={false}
-          width={225}
+          width={325}
         >
           <Wrapper borderColor="orange">
             <h3 style={{ textAlign: 'center' }}>Help Panel</h3>
+            <article
+              style={{ width: '100%' }}
+              dangerouslySetInnerHTML={{
+                __html: md(
+                  `
+## General Flow
+
+- Add people
+- Write task details
+- Select responsible person
+- Copy link and share
+
+### Caveats
+**Works only in current session by hash storing in URL**
+
+Possible solution:
+- Edit link in posted chat (yes it huge but it's compressed)
+- Send latest link directly to person
+
+----
+
+## Active parts 
+### Available Assignees
+Add person name (uniq names are welcome)
+
+### Current responsibility
+Md supported description (click to edit)
+
+### Current assignee
+Person who perform actions
+
+             
+            `,
+                ),
+              }}
+            />
           </Wrapper>
         </RightPanel>
       </PageLayout>
