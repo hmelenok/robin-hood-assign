@@ -17,6 +17,7 @@ import { useHistory } from 'react-router-dom';
 import InlineEdit from '@atlaskit/inline-edit';
 import TextArea from '@atlaskit/textarea';
 import md from 'md';
+import InlineMessage from '@atlaskit/inline-message';
 import AddUserBlock from './AddUserBlock';
 import TopHeader from './components/TopHeader';
 import User from './components/User';
@@ -31,7 +32,7 @@ const Wrapper = ({
   noOutline,
   noHorizontalScrollbar,
 }: {
-  borderColor: string;
+  borderColor?: string;
   children: React.ReactNode;
   minHeight?: string;
   noOutline?: boolean;
@@ -39,7 +40,7 @@ const Wrapper = ({
 }) => (
   <div
     style={{
-      outline: noOutline ? 'none' : `0px dashed ${borderColor}`,
+      outline: noOutline || !borderColor ? 'none' : `1px solid ${borderColor}`,
       outlineOffset: -4,
       padding: 8,
       minHeight,
@@ -127,7 +128,7 @@ function App() {
             isFixed={false}
             width={325}
           >
-            <Wrapper borderColor="darkgreen">
+            <Wrapper>
               <div style={{ minWidth: 50, padding: '0 20px' }}>
                 <h4>Available Assignees</h4>
 
@@ -147,7 +148,7 @@ function App() {
             </Wrapper>
           </LeftSidebarWithoutResize>
           <Main testId="main" id="main">
-            <Wrapper borderColor="black" minHeight="400px">
+            <Wrapper minHeight="400px">
               <InlineEdit
                 defaultValue={topic}
                 onConfirm={(value) => setTopic(value)}
@@ -178,21 +179,21 @@ function App() {
           isFixed={false}
           width={325}
         >
-          <Wrapper borderColor="orange">
-            <h3 style={{ textAlign: 'center' }}>Help Panel</h3>
+          <Wrapper>
+            <InlineMessage type="info" secondaryText="FAQ" placement="left-start" />
             <article
               style={{ width: '100%' }}
               dangerouslySetInnerHTML={{
                 __html: md(
                   `
-## General Flow
+### General Flow
 
 - Add people
 - Write task details
 - Select responsible person
 - Copy link and share
 
-### Caveats
+#### Caveats
 **Works only in current session by hash storing in URL**
 
 Possible solution:
@@ -201,14 +202,14 @@ Possible solution:
 
 ----
 
-## Active parts 
-### Available Assignees
+### Active parts 
+#### Available Assignees
 Add person name (uniq names are welcome)
 
-### Current responsibility
+#### Current responsibility
 Md supported description (click to edit)
 
-### Current assignee
+#### Current assignee
 Person who perform actions
 
              

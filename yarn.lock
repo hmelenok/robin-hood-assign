@@ -110,6 +110,17 @@
     react-loadable "^5.1.0"
     tslib "^2.0.0"
 
+"@atlaskit/inline-message@^11.0.7":
+  version "11.0.7"
+  resolved "https://registry.yarnpkg.com/@atlaskit/inline-message/-/inline-message-11.0.7.tgz#24098867d2fda30f38b25cc04b80f49fd936c87b"
+  integrity sha512-IpomsOVwzBgK4W6BwXwKu8+fXiUBQsGs9w3iniJPBOpgrX+MUx32s/j4B0V7/3DhOtrtyQtbvIA0urZsZrOaXA==
+  dependencies:
+    "@atlaskit/button" "^15.1.0"
+    "@atlaskit/icon" "^21.0.0"
+    "@atlaskit/inline-dialog" "^13.0.0"
+    "@atlaskit/theme" "^11.0.0"
+    tslib "^2.0.0"
+
 "@atlaskit/motion@^0.4.0":
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/@atlaskit/motion/-/motion-0.4.5.tgz#dcc7fb47d07e2bfc842dc7d72a3922c09f85d128"

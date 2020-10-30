@@ -10,6 +10,7 @@
     "@atlaskit/form": "^8.1.6",
     "@atlaskit/icon": "^21.1.4",
     "@atlaskit/inline-edit": "^11.0.6",
+    "@atlaskit/inline-message": "^11.0.7",
     "@atlaskit/page-header": "^10.0.6",
     "@atlaskit/page-layout": "^0.10.9",
     "@atlaskit/textarea": "^3.0.5",
