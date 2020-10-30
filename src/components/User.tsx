@@ -8,11 +8,13 @@ const User = ({
 }:{
   user: UserModel,
   status: string | undefined, onRemove?: () =>void, onSelect?: () =>void, selected?: boolean}) => (
-    <div style={{
-      background: `linear-gradient(90deg, ${user.color} 0%, #f1f1f1 35%, #fff 100%)`,
-      outline: selected ? `1px solid ${user.color}` : 'none',
-      width: '100%',
-    }}
+    <div
+      style={{
+        background: `linear-gradient(90deg, ${user.color} 0%, #f1f1f1 35%, #fff 100%)`,
+        outline: selected ? `1px solid ${user.color}` : 'none',
+        width: '100%',
+      }}
+      className="User"
     >
       <AvatarItem
         backgroundColor="transparent"

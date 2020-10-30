@@ -4,6 +4,7 @@ import './index.css';
 import { HashRouter, Route } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './houdini-modules';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -19,3 +19,27 @@
   color: #61dafb;
 }
 
+.App-assignees {
+  min-width: 50px;
+  padding: 0 20px;
+}
+.App-assignee {
+  margin: 5px 0;
+}
+
+
+
+.App-next {
+  margin: 10px 0;
+}
+
+.User {
+  -webkit-box-decoration-break: clone;
+ box-decoration-break: clone;
+ background: hsl(276, 100%, 50%);
+}
+@supports (background: paint(slanted-bg)) {
+  .User.User--loaded {
+    background: paint(slanted-bg);
+  }
+}

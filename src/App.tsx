@@ -67,7 +67,7 @@ const getRandomByName = (name: string) => ({
   name,
   color: randomColor({
     luminosity: 'light',
-    format: 'hex',
+    format: 'hsl',
   }),
   avatar: getAvatar(name),
 });
@@ -129,13 +129,13 @@ function App() {
             width={325}
           >
             <Wrapper>
-              <div style={{ minWidth: 50, padding: '0 20px' }}>
+              <div className="App-assignees">
                 <h4>Available Assignees</h4>
 
                 {users.map((user, index) => {
                   const selected = currentUserIndex === index;
                   return (
-                    <div style={{ margin: '5px 0' }}>
+                    <div className="App-assignee">
                       <User user={user} selected={selected} status={selected ? 'locked' : undefined} onSelect={() => setUserIndex(index)} onRemove={() => removeUserByIndex(index)} />
                     </div>
                   );
@@ -161,7 +161,7 @@ function App() {
               />
               {users[currentUserIndex] ? <User selected user={users[currentUserIndex]} status="locked" /> : 'No assignees'}
               <Button
-                style={{ margin: '10px 0' }}
+                className="App-next"
                 css={{}}
                 type="submit"
                 appearance="primary"
